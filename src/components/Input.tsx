@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Keyboard, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { cn } from '../utils/cn';
 
 interface IInputProps extends React.ComponentProps<typeof TextInput> {
@@ -32,8 +32,6 @@ export function Input({ className, mask, onChangeText, label, append, error, ...
           )}
           value={mask ? maskedValue : props.value}
           onChangeText={handleChangeText}
-          onPressOut={Keyboard.dismiss}
-          onEndEditing={Keyboard.dismiss}
           {...props}
         />
 
