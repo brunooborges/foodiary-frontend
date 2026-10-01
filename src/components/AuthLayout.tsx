@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Keyboard, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface IAuthLayoutProps {
@@ -13,16 +13,20 @@ export function AuthLayout({ icon, title, subtitle, children }: IAuthLayoutProps
 
   return (
     <View className='flex-1'>
-      <View className='flex-1 bg-white'>
+      <Pressable
+        className='flex-1 bg-white'
+        accessible={false}
+        onPress={Keyboard.dismiss}
+      >
         <View className='h-[98px] bg-lime-400' />
 
         <View className='size-12 bg-white items-center justify-center rounded-xl -mt-6 mx-auto border-2 border-lime-400'>
           <Text>{icon}</Text>
         </View>
 
-        <View className='mx-auto mt-6 items-center'>
+        <View className='mt-6 px-6 items-center'>
           <Text className='text-black-700 font-sans-semibold tracking-[-0.32px] text-[32px] text-center'>{title}</Text>
-          <Text className='mt-1 text-gray-700 text-base font-sans-regular'>{subtitle}</Text>
+          <Text className='mt-1 text-gray-700 text-base font-sans-regular text-center'>{subtitle}</Text>
         </View>
 
         <View
@@ -31,7 +35,7 @@ export function AuthLayout({ icon, title, subtitle, children }: IAuthLayoutProps
         >
           {children}
         </View>
-      </View>
+      </Pressable>
     </View>
   );
 }

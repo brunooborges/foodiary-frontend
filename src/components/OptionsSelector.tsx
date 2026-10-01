@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { cn } from '../utils/cn';
 
 interface IOptionSelectorProps {
@@ -14,10 +14,15 @@ interface IOptionSelectorProps {
 
 export function OptionsSelector({ options, onChange, value }: IOptionSelectorProps) {
   return (
-    <View className='gap-4 w-full'>
+    <View
+      className='gap-4 w-full'
+      accessibilityRole='radiogroup'
+    >
       {options.map((option) => (
-        <TouchableOpacity
+        <Pressable
           key={option.value}
+          accessibilityRole='radio'
+          accessibilityState={{ checked: value === option.value }}
           className={cn(
             'border border-gray-500 rounded-2xl py-3 px-4 flex-row gap-4 items-center',
             value === option.value && 'bg-lime-700/10 border-lime-700',
@@ -33,14 +38,14 @@ export function OptionsSelector({ options, onChange, value }: IOptionSelectorPro
             <Text>{option.icon}</Text>
           </View>
 
-          <View>
+          <View className='flex-1'>
             <Text className='text-black-700 text-base font-sans-semibold'>{option.title}</Text>
 
             {option.description && (
               <Text className='text-sm font-sans-regular text-gray-700'>{option.description}</Text>
             )}
           </View>
-        </TouchableOpacity>
+        </Pressable>
       ))}
     </View>
   );

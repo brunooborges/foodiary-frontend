@@ -103,7 +103,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOut = useCallback(async () => {
     setToken(null);
-    queryClient.removeQueries({ queryKey: ['user'] });
+    // Everything cached belongs to the account that is leaving (profile, meals, consent): none of it may be shown
+    // to, or trusted for, the next person who signs in on this device.
+    queryClient.clear();
     await AsyncStorage.removeItem(TOKEN_STORAGE_KEY);
   }, [queryClient]);
 
