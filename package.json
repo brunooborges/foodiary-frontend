@@ -21,6 +21,10 @@
       "src/components/ConsentModal.tsx",
       "src/components/CreateMealBottomBar.tsx",
       "src/components/HomeHeader.tsx",
+      "src/components/MealDetailsContent.tsx",
+      "src/components/MealDetailsScreen.tsx",
+      "src/utils/mealNutrition.ts",
+      "src/utils/mealStatus.ts",
       "src/hooks/useConsent.ts",
       "src/hooks/useCreateMeal.ts"
     ]
